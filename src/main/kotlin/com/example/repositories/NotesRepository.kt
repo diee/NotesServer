@@ -16,7 +16,7 @@ object NotesRepository {
     fun getById(id: Long) = notes.find { it.id == id }
 
     fun upsert(note: Note) {
-        if (note.id == 0L) {
+        if (note.id == -1L) {
             notes.add(note.copy(id = notes.size + 1L))
         } else {
             val index = notes.indexOfFirst { it.id == note.id }
